@@ -145,3 +145,92 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+/* 
+require('dotenv').config();
+const express = require('express');
+const nodemailer = require('nodemailer');
+const { v4: uuidv4 } = require('uuid');
+const { createEvent } = require('ics');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
+
+const schedules = []; // Simulação de banco de dados
+
+// Configuração global do Nodemailer
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+});
+
+// Função para enviar e-mail com lembrete
+const sendEmailWithReminder = (schedule, action) => {
+    const { name, subject, date, time } = schedule;
+
+    // Formatar data e hora corretamente
+    const [year, month, day] = date.split('-');
+    const [hour, minute] = time.split(':');
+
+    const event = {
+        start: [parseInt(year), parseInt(month), parseInt(day), parseInt(hour), parseInt(minute)],
+        duration: { hours: 1 },
+        title: Atendimento: ${subject},
+        description: Atendimento com ${name},
+        location: 'SMEC Balneário Pinhal',
+    };
+
+    createEvent(event, (error, value) => {
+        if (error) {
+            console.error('Erro ao criar o evento ICS:', error);
+            return;
+        }
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: 'bomtourofc@gmail.com',
+            subject: Atendimento ${action}: ${subject},
+            text: Um atendimento foi ${action}.\n\nDetalhes:\n- Nome: ${name}\n- Assunto: ${subject}\n- Data: ${date}\n- Horário: ${time},
+            attachments: [
+                {
+                    filename: 'lembrete.ics',
+                    content: value,
+                },
+            ],
+        };
+
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.error('Erro ao enviar e-mail:', err.message);
+            } else {
+                console.log(E-mail enviado para ${mailOptions.to} com ID: ${info.messageId});
+            }
+        });
+    });
+};
+
+// Rota de teste para enviar e-mail
+app.get('/test-email', (req, res) => {
+    const testSchedule = {
+        name: 'João Silva',
+        subject: 'Consulta Médica',
+        date: '2025-01-21',
+        time: '15:00',
+    };
+
+    sendEmailWithReminder(testSchedule, 'criado');
+    res.send('E-mail de teste enviado.');
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(Servidor rodando em http://localhost:${PORT});
+});
+ /*
