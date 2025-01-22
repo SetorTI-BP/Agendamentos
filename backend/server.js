@@ -1,3 +1,13 @@
+require('dotenv').config(); // Carrega as variáveis de ambiente
+
+// As variáveis do .env
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = process.env.SMTP_PORT;
+const SMTP_SECURE = process.env.SMTP_SECURE === 'true'; // Converte o valor para booleano
+
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -20,7 +30,7 @@ const sendEmailWithReminder = (schedule, action) => {
     const [hour, minute] = time.split(':');
 
     const event = {
-        start: [parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour), parseInt(minute)], // [ano, mês, dia, hora, minuto]
+        start: [parseInt(year), parseInt(month), parseInt(day), parseInt(hour), parseInt(minute)], // Corrigido o formato do mês
         duration: { hours: 1 },
         title: `Atendimento: ${subject}`,
         description: `Atendimento com ${name}`,
@@ -34,38 +44,50 @@ const sendEmailWithReminder = (schedule, action) => {
             return;
         }
 
-        console.log('Evento ICS gerado:', value);  // Verifique a saída no console
+        console.log('Evento ICS gerado:', value);
 
         // Configuração do transporte de e-mail
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: SMTP_HOST,
+            port: SMTP_PORT,
+            secure: SMTP_SECURE, // Use true para 465, false para outras portas
             auth: {
-                user: 'douglasrodrigues.larre@gmail.com', // Substitua com seu e-mail
-                pass: 'zedy gpzm cijk iivo', // Substitua com sua senha de app
+                user: EMAIL_USER, // Usando variável de ambiente
+                pass: EMAIL_PASS, // Usando variável de ambiente
             },
-        });
+        });        
 
-        // Configuração da mensagem de e-mail
-        const mailOptions = {
-            from: 'douglasrodrigues.larre@gmail.com',
-            to: 'bomtourofc@gmail.com', // E-mail para o qual deseja enviar
-            subject: `Atendimento ${action}: ${subject}`,
-            text: `Um atendimento foi ${action}.\n\nDetalhes:\n- Nome: ${name}\n- Assunto: ${subject}\n- Data: ${date}\n- Horário: ${time}`,
-            attachments: [
-                {
-                    filename: 'lembrete.ics',
-                    content: value, // O conteúdo ICS gerado
-                },
-            ],
-        };
-
-        // Enviar o e-mail
-        transporter.sendMail(mailOptions, (err, info) => {
+        // Verificar conexão SMTP antes de enviar
+        transporter.verify((err, success) => {
             if (err) {
-                console.error('Erro ao enviar e-mail:', err);
-            } else {
-                console.log('E-mail enviado:', info.response);
+                console.error('Erro ao conectar ao SMTP:', err);
+                return;
             }
+
+            console.log('Servidor SMTP pronto para enviar e-mails!');
+
+            // Configuração da mensagem de e-mail
+            const mailOptions = {
+                from: 'douglasrodrigues.larre@gmail.com',
+                to: 'informaticasmecpinhal@gmail.com', //'bomtourofc@gmail.com', // E-mail para o qual deseja enviar
+                subject: `Atendimento ${action}: ${subject}`,
+                text: `Um atendimento foi ${action}.\n\nDetalhes:\n- Nome: ${name}\n- Assunto: ${subject}\n- Data: ${date}\n- Horário: ${time}`,
+                attachments: [
+                    {
+                        filename: 'lembrete.ics',
+                        content: value, // O conteúdo ICS gerado
+                    },
+                ],
+            };
+
+            // Enviar o e-mail
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    console.error('Erro ao enviar e-mail:', err);
+                } else {
+                    console.log('E-mail enviado com sucesso:', info.response);
+                }
+            });
         });
     });
 };
@@ -75,7 +97,7 @@ app.get('/test-email', (req, res) => {
     const testSchedule = {
         name: 'João Silva',
         subject: 'Consulta Médica',
-        date: '2025-01-21',  // Data do evento (ano-mês-dia)
+        date: '2025-01-21', // Data do evento (ano-mês-dia)
         time: '15:00', // Horário do evento (hora:minuto)
     };
 
