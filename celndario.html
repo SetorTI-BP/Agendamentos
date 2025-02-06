@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda do Calendário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="calendar">
+        <nav class="bg-dark text-white p-3" style="width: 250px; min-height: 100vh;">
+            <ul class="nav flex-column mt-4">
+                <li class="nav-item mb-3">
+                    <a href="agendamentos.html" class="nav-link text-white" id="showAttendances">Retornar</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const calendarEl = document.getElementById('calendar');
+
+            // Função para buscar os agendamentos da API
+            const fetchSchedules = async () => {
+                try {
+                    const response = await axios.get('http://localhost:3000/api/schedules');
+                    return response.data.map(schedule => ({
+                        title: `${schedule.name} - ${schedule.subject}`,
+                        start: `${schedule.date}T${schedule.time}`,
+                        id: schedule.id
+                    }));
+                } catch (error) {
+                    console.error('Erro ao buscar os agendamentos:', error);
+                    return [];
+                }
+            };
+
+            // Inicializar o calendário
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'pt-br',
+                events: await fetchSchedules(), // Carrega os eventos
+                editable: true, // Permite editar diretamente no calendário
+                eventClick: async (info) => {
+                    const confirmDelete = confirm(`Deseja excluir o agendamento "${info.event.title}"?`);
+                    if (confirmDelete) {
+                        try {
+                            await axios.delete(`http://localhost:3000/api/schedules/${info.event.id}`);
+                            alert('Agendamento excluído com sucesso!');
+                            info.event.remove(); // Remove visualmente o evento
+                        } catch (error) {
+                            alert('Erro ao excluir o agendamento.');
+                        }
+                    }
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
