@@ -1,0 +1,113 @@
+body {
+    background-color: #007BFF; /* Azul de fundo */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#calendar {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+}
+
+.img_home {
+    cursor: pointer;
+}
+
+.fc-toolbar-title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fc-daygrid-day-number {
+    color: black;
+    font-weight: bold;
+}
+
+.fc-daygrid-day {
+    border: 1px solid #ddd;
+}
+
+.fc-daygrid-day.fc-day-today {
+    background-color: #f8f9fa !important;
+}
+
+/* Estilos personalizados para eventos */
+.fc-event {
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.fc-event.Quotes {
+    color: blue;
+}
+
+.fc-event.Giveaway {
+    color: orange;
+}
+
+.fc-event.Blog {
+    color: gray;
+}
+
+.fc-event.Freebie {
+    color: green;
+}
+
+.fc-event.Reel {
+    color: red;
+}
+
+/* Container do seletor */
+.view-selector-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+}
+
+/* Rótulo do seletor */
+.view-selector-container label {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+/* Seletor dropdown */
+#viewSelector {
+    padding: 8px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #007BFF;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+}
+
+#viewSelector:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Título do mês e ano */
+#monthYearLabel {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
