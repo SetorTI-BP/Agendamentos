@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const calendarEl = document.getElementById('calendar');
-    const viewSelector = document.getElementById('viewSelector');
     const monthYearLabel = document.getElementById('monthYearLabel');
 
     // Função para buscar os agendamentos da API
@@ -26,8 +25,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         editable: true,
         headerToolbar: {
             left: 'prev,next today',
-            center: '',
-            right: ''
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         datesSet: (info) => {
             const dataAtual = new Date(info.view.currentStart);
@@ -50,9 +49,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     calendar.render();
-
-    // Alterar a exibição do calendário ao selecionar uma opção
-    viewSelector.addEventListener('change', (event) => {
-        calendar.changeView(event.target.value);
-    });
 });
