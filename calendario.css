@@ -1,12 +1,17 @@
+html {
+    background-color: none;
+}
+
 body {
     background-color: #007BFF; /* Azul de fundo */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    transition: background 0.3s, color 0.3s;
 }
 
 #calendar {
-    background-color: white;
+    background-color: #f5f5f5;
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
@@ -16,13 +21,13 @@ body {
 
 /* Garantir que o link não ocupe mais espaço do que a imagem */
 .home-link {
-    display: inline-block; /* Restringe o clique apenas à área da imagem */
+    display: inline-block;
+     /* Restringe o clique apenas à área da imagem */
 }
 
 .img_home {
     display: block; /* Remove espaçamento extra abaixo da imagem */
-    width: 10%; /* Mantém o tamanho original */
-    max-width: 150px; /* Opcional: Define um tamanho máximo */
+    width: 5%; /* Mantém o tamanho original */
     height: auto; /* Mantém a proporção correta */
     cursor: pointer;
 }
@@ -30,6 +35,10 @@ body {
 /*.calendar-container a{
     border: 40px solid red;
 }*/
+
+h2#fc-dom-1 {
+    color: black;
+}
 
 .fc-toolbar-title {
     color: white;
@@ -43,12 +52,12 @@ body {
 }
 
 .fc-daygrid-day {
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
 }
 
 .fc-daygrid-day.fc-day-today {
-    background-color: #d4f2dc !important;
-    opacity: 0.6;
+    background-color: #0047ff !important;
+    /*opacity: 0.6; Caso queira deixar mais transparente*/ 
 }
 
 /* Estilos personalizados para eventos */
@@ -150,4 +159,126 @@ body {
 
 .fc-button:hover {
     background-color: #0056b3;
+}
+
+button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-button.fc-button-primary{
+    border-radius: 99px;
+}
+
+
+
+/* Dark Light Mode */
+
+.dark-mode {
+    background-color: #121212;
+    color: black;
+}
+
+/* Adiciona fundo preto quando o modo escuro está ativado */
+.dark-mode-calendar-bg {
+    background-color: black !important;
+    color: white; /* Ajuste opcional para melhorar a legibilidade */
+}
+
+.toggle-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+.toggle-label {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background: #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.toggle-label .toggle-ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: yellow;
+    border-radius: 50%;
+    top: 2.5px;
+    left: 3px;
+    transition: transform 0.3s;
+}
+#theme-toggle {
+    display: none;
+}
+#theme-toggle:checked + .toggle-label {
+    background: #444;
+}
+#theme-toggle:checked + .toggle-label .toggle-ball {
+    transform: translateX(25px);
+    background: white;
+}
+.calendar-container {
+    transition: background 0.3s, color 0.3s;
+}
+
+.fc .fc-media-screen .fc-direction-ltr .fc-theme-standard .dark-mode-calendar {
+    background-color: black;
+}
+
+/* Remove as bordas da grade */
+.fc-theme-standard td, 
+.fc-theme-standard th {
+    border: none !important;
+}
+
+/* Remove o espaçamento das células */
+.fc-daygrid-day-frame {
+    border: none !important;
+}
+
+.dark-mode-calendar {
+    background-color: #adafb3;
+    color: #ddd;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+.dark-mode-calendar .fc-toolbar-title,
+.dark-mode-calendar .fc-daygrid-day-number {
+    color: white !important;
+}
+.dark-mode-calendar .fc-daygrid-day {
+    border-color: #444 !important;
+}
+.dark-mode-calendar .fc-event {
+    background-color: #333 !important;
+    color: #fff !important;
+}
+
+/* Estilo padrão para os dias do mês */
+.fc-daygrid-day {
+    background-color: white; /* Cor de fundo no modo claro */
+    color: black; /* Cor do texto no modo claro */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Quando um dia está disponível e interativo */
+.fc-daygrid-day:not(.fc-day-other-month) {
+    background-color: #fff; /* Cinza claro para destacar os dias do mês */
+}
+
+/* Modo escuro: alteramos o fundo dos dias */
+.dark-mode .fc-daygrid-day {
+    background-color: #444 !important; /* Cinza escuro no modo escuro */
+    color: white !important; /* Texto branco para melhor contraste */
+}
+
+/* Estiliza o dia atual */
+.fc-daygrid-day.fc-day-today {
+    background-color: #0047ff !important; /* Azul destacado */
+    color: white !important;
+}
+
+/* Modo escuro: dia atual */
+.dark-mode .fc-daygrid-day.fc-day-today {
+    background-color: #1e90ff !important; /* Azul mais claro para melhor visibilidade */
+    color: black !important;
 }

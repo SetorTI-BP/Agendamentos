@@ -11,15 +11,23 @@
 </head>
 <body>
 
+    <div class="toggle-container">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="toggle-label">
+            <span class="toggle-ball"></span>
+        </label>
+    </div>
+
     <div class="calendar-container">
         <a href="agendamentosTeste1DESIGN.html" class="home-link">
-            <img class="img_home" src="assets/img/VERSÃO LOGO CIRCULAR @8x-8 (2).png" alt="logo.bp">
+            <img class="img_home" src="assets/img/Ativo 2@8x-8.png" alt="logo.bp">
         </a>        
-        <h2 id="monthYearLabel"></h2>
+        <h2 id="monthYearLabel" style="display: none;"></h2>
 
         <div id="calendar"></div>
     </div>
 
     <script src="calendar.js"></script>
+    <script src="calendarDarkLight.js"></script>
 </body>
 </html>
