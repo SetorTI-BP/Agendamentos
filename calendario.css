@@ -56,7 +56,7 @@ h2#fc-dom-1 {
 }
 
 .fc-daygrid-day.fc-day-today {
-    background-color: #0047ff !important;
+    background-color: #f15213 !important;
     /*opacity: 0.6; Caso queira deixar mais transparente*/ 
 }
 
@@ -235,7 +235,7 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
 }
 
 .dark-mode-calendar {
-    background-color: #adafb3;
+    background-color: #ACAFB3;
     color: #ddd;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
@@ -251,13 +251,23 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
     color: #fff !important;
 }
 
+.fc-daygrid-day-frame.fc-scrollgrid-sync-inner {
+    height: 130.03px;
+}
+
 /* Estilo padrão para os dias do mês */
 .fc-daygrid-day {
     background-color: white; /* Cor de fundo no modo claro */
     color: black; /* Cor do texto no modo claro */
     border-radius: 8px; /* Bordas arredondadas */
-    padding: 5px;
+    margin: 5px;
     transition: background 0.3s, color 0.3s;
+}
+
+/* Espaçamento entre as dastas week e day*/
+.fc .fc-timegrid-slot {
+    border-bottom: 0;
+    height: 2.5rem;
 }
 
 /* Quando um dia está disponível e interativo */
@@ -273,7 +283,7 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
 
 /* Estiliza o dia atual */
 .fc-daygrid-day.fc-day-today {
-    background-color: #0047ff !important; /* Azul destacado */
+    background-color: #1e90ff !important; /* Azul destacado */
     color: white !important;
 }
 
@@ -281,4 +291,19 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
 .dark-mode .fc-daygrid-day.fc-day-today {
     background-color: #1e90ff !important; /* Azul mais claro para melhor visibilidade */
     color: black !important;
+}
+
+
+
+
+
+/* Estilo para os dias do mês anterior e próximo */
+.fc-daygrid-day.highlight {
+    background-color: #F5F5F5 !important;  /* Altere para a cor desejada */
+    color: black;  /* Garante que o texto seja legível */
+}
+
+.dark-mode .fc-daygrid-day.highlight {
+    background-color: #1D1D1F !important; /* Cinza escuro no modo escuro */
+    color: white!important; /* Texto branco para melhor contraste */
 }

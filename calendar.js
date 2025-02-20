@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const response = await axios.get('http://localhost:3000/api/schedules');
             return response.data.map(schedule => ({
-                title: `${schedule.name} - ${schedule.subject}`,
+                title: schedule.subject,
                 start: `${schedule.date}T${schedule.time}`,
                 id: schedule.id
             }));
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             return [];
         }
     };
+    
 
     // Inicializar o calendário
     const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -45,6 +46,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                     alert('Erro ao excluir o agendamento.');
                 }
             }
+        },
+        dayCellClassNames: function(info) {
+            const date = info.date; // data da célula
+            const currentMonth = new Date().getMonth(); // Mês atual
+            const cellMonth = date.getMonth(); // Mês da célula
+
+            // Verifique se a data é do mês anterior ou do próximo mês
+            if (cellMonth !== currentMonth) {
+                return 'highlight'; // Adiciona a classe 'highlight' para esses dias
+            }
+            return '';
         }
     });
 
