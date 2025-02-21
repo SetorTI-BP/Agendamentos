@@ -1,5 +1,5 @@
 html, body {
-    background-color: #2dbeeb; /* Azul de fundo */
+    background-color: #bef0f5; /* Azul de fundo */
     font-family: "Gantari", serif;
     font-optical-sizing: auto;
     font-weight: weight;
@@ -25,7 +25,7 @@ html, body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 90%;
-    width: 72%; /* Ajuste para tela menor */
+    width: 90%; /* Ajuste para tela menor */
 }
 
 /* Garantir que o link não ocupe mais espaço do que a imagem */
@@ -326,7 +326,15 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
 }
 
 
+.fc-daygrid-dot-event .fc-event-title {
+    font-size: 1.01rem;
+    font-weight: 500;
+}
 
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+    font-size: 1.01rem;
+    font-weight: 500;
+}
 
 
 /* Estilo para os dias do mês anterior e próximo */
@@ -352,6 +360,14 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
     align-items: center; /* Centraliza verticalmente */
     max-width: 1200px;
     margin: 0 auto; /* Centraliza o header */
+}
+
+#home_page {
+    border: 1px solid #2dbeeb;
+    border-radius: 25px;
+    background-color: #2dbeeb;
+    text-align: center;
+    width: 20%;
 }
 
 #home_page a {

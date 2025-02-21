@@ -89,12 +89,12 @@
     <body>
         <div class="d-flex">
             <!-- Barra Lateral -->
-            <nav class="bg-dark text-white p-3 sidebar" style="width: 250px; min-height: 100vh;">
+            <nav class="bg-dark p-3 sidebar" style="width: 225px; min-height: 100vh;">
                 <button class="sidebar-button" id="toggleSidebar">☰</button>
-                <h3 class="text-center">Menu</h3>
+                <h3 class="text-center" style="color: black;">Menu</h3>
                 <ul class="nav flex-column mt-4">
                     <li class="nav-item mb-3">
-                        <a href="#" class="nav-link text-white" id="showAttendances">Atendimentos</a>
+                        <a href="#" class="nav-link" id="showAttendances">Atendimentos</a>
                     </li>
                     <li class="nav-item mb-3">
                         <a href="#" class="nav-link text-white" id="showHome">Home</a>
@@ -152,8 +152,10 @@
                 const mainContent = document.getElementById('mainContent');
                 mainContent.innerHTML = `
                     <h1 class="text-center mb-4 text-primary">Agenda de Atendimentos SMEC Balneário Pinhal</h1>
-                    <div class="card p-4 mb-4 shadow">
-                        <h4 class="text-success">Agendar Atendimento</h4>
+                    <section class="card p-4 mb-4 shadow">
+                        <div class="text_primary_form">
+                            <h4 class="text-success">Agendar Atendimento</h4>
+                        </div>
                         <form id="scheduleForm">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nome</label>
@@ -173,7 +175,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Agendar</button>
                         </form>
-                    </div>
+                    </section>
                     <div class="card shadow mt-5">
                         <div class="card-body">
                             <h4 class="card-title text-primary">Agendamentos Recentes</h4>
