@@ -1,8 +1,4 @@
-html {
-    background-color: none;
-}
-
-body {
+html, body {
     background-color: #2dbeeb; /* Azul de fundo */
     font-family: "Gantari", serif;
     font-optical-sizing: auto;
@@ -11,6 +7,15 @@ body {
     margin: 0;
     padding: 0;
     transition: background 0.3s, color 0.3s;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+/* Estilo para esconder a barra de rolagem*/
+::-webkit-scrollbar {
+    background-color: #ffffffe3;
+    width: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0px;
 }
 
 #calendar {
@@ -19,7 +24,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 70%;
+    max-width: 90%;
+    width: 72%; /* Ajuste para tela menor */
 }
 
 /* Garantir que o link não ocupe mais espaço do que a imagem */
@@ -90,6 +96,10 @@ h2#fc-dom-1 {
 
 .fc-event.Reel {
     color: red;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+    border: none;
 }
 
 /* Container do seletor */
@@ -169,12 +179,27 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
     border-radius: 99px;
 }
 
+.fc .fc-col-header-cell-cushion {
+    display: inline-block;
+    padding: 2px 4px;
+    text-transform: capitalize;
+}
 
+/* Seleciona os cabeçalhos dos dias da semana */
+.fc-header-toolbar .fc-day-header {
+    /* Remove qualquer ponto após o nome do dia */
+    text-transform: none;
+}
+
+/* Remover o ponto usando ::after ou ::before */
+.fc-header-toolbar .fc-day-header span::after {
+    content: ""; /* Remove qualquer conteúdo (ponto) depois do nome do dia */
+}
 
 /* Dark Light Mode */
 
 .dark-mode {
-    background-color: #121212;
+    background-color: #ACAFB3;
     color: black;
 }
 
@@ -191,6 +216,7 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
     display: flex;
     align-items: center;
 }
+
 .toggle-label {
     position: relative;
     width: 50px;
@@ -199,16 +225,18 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
     border-radius: 25px;
     cursor: pointer;
 }
+
 .toggle-label .toggle-ball {
     position: absolute;
     width: 20px;
     height: 20px;
-    background: yellow;
+    background: #eba51e;
     border-radius: 50%;
     top: 2.5px;
     left: 3px;
     transition: transform 0.3s;
 }
+
 #theme-toggle {
     display: none;
 }
@@ -315,7 +343,7 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
 
 /* ======= HEADER STYLES ======= */
 #header { /* Cor de fundo para destacar o header */
-    padding: 0.5rem 16rem;
+    padding: 0.5rem 2rem;
 }
 
 #header header {
@@ -345,6 +373,23 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
     height: auto;
 }
 
+/* Estilizando o botão de tela cheia */
+.fc-fullscreen-button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fc-fullscreen-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* ======= RESPONSIVIDADE ======= */
 /* ======= RESPONSIVIDADE ======= */
 @media (max-width: 768px) {
     #header header {
@@ -354,5 +399,21 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
 
     #home_page {
         margin-bottom: 10px;
+    }
+
+    /* Ajuste o tamanho do calendário */
+    #calendar {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .img_home {
+        width: 20%;
+    }
+    
+    /* Ajuste no rodapé */
+    footer {
+        font-size: 12px;
+        padding: 10px;
     }
 }

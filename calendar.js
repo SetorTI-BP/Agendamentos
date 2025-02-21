@@ -16,7 +16,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             return [];
         }
     };
-    
+
+    // Função para colocar o calendário em tela cheia
+    const toggleFullScreen = () => {
+        if (!document.fullscreenElement) {
+            calendarEl.requestFullscreen().catch(err => {
+                alert(`Erro ao tentar entrar em tela cheia: ${err.message}`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    };
 
     // Inicializar o calendário
     const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -25,9 +37,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         events: await fetchSchedules(),
         editable: true,
         headerToolbar: {
-            left: 'prev,next today',
+            left: 'prev,next today fullscreen', // Adiciona o botão fullscreen
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        buttonText: {
+            today: 'Hoje',
+            month: 'Mês',
+            week: 'Semana',
+            day: 'Dia'
         },
         datesSet: (info) => {
             const dataAtual = new Date(info.view.currentStart);
@@ -48,17 +66,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         },
         dayCellClassNames: function(info) {
-            const date = info.date; // data da célula
-            const currentMonth = new Date().getMonth(); // Mês atual
-            const cellMonth = date.getMonth(); // Mês da célula
+            const date = info.date;
+            const currentMonth = new Date().getMonth();
+            const cellMonth = date.getMonth();
 
-            // Verifique se a data é do mês anterior ou do próximo mês
             if (cellMonth !== currentMonth) {
-                return 'highlight'; // Adiciona a classe 'highlight' para esses dias
+                return 'highlight';
             }
             return '';
         }
     });
 
     calendar.render();
+
+    // Adiciona o evento de clique para o botão fullscreen
+    const fullscreenButton = document.querySelector('.fc-fullscreen-button');
+    if (fullscreenButton) {
+        fullscreenButton.addEventListener('click', toggleFullScreen);
+    }
 });
