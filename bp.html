@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefeitura de Balneário Pinhal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="bp.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Balneário Pinhal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="agendamentosTeste1DESIGN.html">Agendamentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="calendario.html">Calendário</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/img/original_002.jpg" class="d-block w-100" alt="imagem 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/original_003.jpg" class="d-block w-100" alt="imagem 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/original_004.jpg" class="d-block w-100" alt="imagem 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/original_005.jpg" class="d-block w-100" alt="imagem 4">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <!-- Indicadores circulares -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            </div>
+        </div>
+
+        <section class="hero-content">
+            <h1>Bem-vindo à Prefeitura de Balneário Pinhal</h1>
+            <p>Aqui você encontra serviços e informações essenciais sobre nossa cidade!</p>
+        </section>
+    </section>
+
+    <!-- Seção de serviços -->
+    <section class="services container mt-5">
+        <h2 class="text-center mb-4">Nossos Serviços</h2>
+
+        <!-- Abas de filtros -->
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-primary mx-2" id="citizenTab">Cidadão</button>
+            <button class="btn btn-secondary mx-2" id="businessTab">Empresas</button>
+            <button class="btn btn-success mx-2" id="serverTab">Servidor</button>
+        </div>
+
+        <!-- Contêiner para exibir serviços -->
+        <div id="serviceContainer" class="row">
+            <!-- Os serviços serão carregados dinamicamente aqui -->
+        </div>
+    </section>
+    
+    <section class="news-container">
+        <h2>Notícias</h2>
+        <div class="news-grid">
+            <div class="news-item highlight">
+                <img src="assets/img/noticia1.jpg" alt="Museu dos Países Baixos">
+                <div class="news-content">
+                    <span class="category">SECRETÁRIA DE ESPORTES</span>
+                    <p> 8 de Fevereiro encontro de capoeira 💛💜</p>
+                </div>
+            </div>
+            <div class="news-item">
+                <img src="assets/img/noticia2.jpg" alt="Leilão de veículos">
+                <div class="news-content">
+                    <span class="category">ADMINISTRAÇÃO E PATRIMÔNIO</span>
+                    <p>💡 Balneário Pinhal mais iluminada! 💡</p>
+                </div>
+            </div>
+            <div class="news-item">
+                <img src="assets/img/noticia3.jpg" alt="Empresas em Porto Alegre">
+                <div class="news-content">
+                    <span class="category">SECRETÁRIA DE CULTURA</span>
+                    <p>🎶🥁 Vem aí mais um grande Encontro de Capoeira no Verão Divertido 2025! 🥁🎶</p>
+                </div>
+            </div>
+        </div>
+        <a href="https://balneariopinhal.rs.gov.br/noticia/?noticias.html" class="view-all">VER TODAS &rsaquo;</a>
+    </section>
+    
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer_info">
+            <div>
+                <img src="assets/img/Ativo 1@8x-8.png" class="img_footer" alt="logo_footer_bp">
+            </div>
+
+            <div class="footer_info_side-left">
+                <p>
+                    &copy; 2025 Prefeitura Municipal de Balneário Pinhal
+                </p>
+
+                <p>
+                    Av. Itália, 3100, Centro CEP: 95599-000
+                </p>
+
+                <p>
+                    imprensa@balneariopinhal.rs.gov.br
+                </p>
+            </div>
+        </div>
+
+        <div class="footer_info_two">
+            <img src="assets/img/Ativo 1@8x-8.png" class="img_footer_two" alt="logo_footer_bp" style="width: 30px;">
+            <p>&copy; 2025 Prefeitura Municipal de Balneário Pinhal</p>
+            <i class="fa fa-info"></i>
+            <a href="https://balneariopinhal.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html"> ÁCESSO A INFORMAÇÃO</a>
+        </div>
+    </footer>
+
+    <footer class="footer_dev_end">
+        <div class="footer_dev_end">
+            <p>Desenvolvido por <a href="https://github.com/DevLarre" target="_blank">Douglas Larré</a></p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="bp.js"></script>
+</body>
+
+</html>

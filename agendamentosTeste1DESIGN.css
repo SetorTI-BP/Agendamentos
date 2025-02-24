@@ -1,5 +1,5 @@
 body {
-    background-color: #bef0f5;
+    background-color: #BEF0F5;
     font-family: "Gantari", serif;
     font-optical-sizing: auto;
     font-weight: weight;
@@ -8,7 +8,7 @@ body {
 }
 
 h1 {
-    color: #0056b3;
+    color: #007bff;
     font-weight: bold;
     text-shadow: 1px 1px 3px #bbb;
 }
@@ -19,13 +19,65 @@ h1.text-center.mb-4.text-primary {
     margin: revert;
 }
 
+/* Navbar */
+.navbar {
+    padding: 25px 30px; /* Ajuste no padding */
+    background-color: #39393D !important; /* Cor de fundo */
+}
+
+.navbar-nav .nav-link {
+    color: whitesmoke !important; /* Cor dos links */
+    font-size: 1.2rem; /* Ajusta o tamanho da fonte */
+    font-weight: bold; /* Deixa os links em negrito */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #F4F4B4 !important; /* Cor ao passar o mouse */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #F4F4B4; /* Cor do nome da marca */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Suaviza a transição da cor */
+}
+
+/* Cor ao passar o mouse */
+.navbar-brand:hover {
+    color: #F4F4B4; /* Muda a cor para #F4F4B4 ao passar o mouse */
+}
+
+/* Alinha os itens da navbar no centro */
+.navbar-nav {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Remove o ícone de menu de mobile */
+.sidebar-button {
+    display: none; /* Esconde o botão de menu na barra superior */
+}
+
+.container-fluid {
+    margin-top: 20px;
+}
+
+.new_color {
+    background-color: #c9302c;
+}
+
+.new_color_two {
+    background-color: blue;
+}
+
 .text_title {
-    border: 1px solid #2dbeeb;
-    border-radius: 25px;
-    background-color: #2dbeeb;
+    background-color: #2DBEEE; /* Azul Claro */
+    border: 1px solid #2DBEEE; 
+    color: #fff; /* Texto branco no título */
     text-align: center;
     margin-bottom: 50px;
     width: 40%;
+    border-radius: 15px; /* Bordas arredondadas */
 }
 
 .center-container {
@@ -174,7 +226,7 @@ nav.bg-dark.text-white.p-3.sidebar.collapsed {
 }
 
 h3.text-center {
-    color: black;
+    color: whitesmoke;
 }
 
 a#showAttendences.nav-link.text-white {
@@ -212,19 +264,24 @@ a#showAttendences.nav-link.text-white {
 .sidebar {
     transition: transform 0.3s ease-in-out;
     transform: translateX(0);
-    color: black !important; /* Forçar a cor do texto */
+    font-weight: bold;
 }
 
 .sidebar a {
-color: black !important; /* Deixa os links em preto */
-border: 1px solid white !important;
-border-top: none !important;
-border-left: none !important;
-border-right: none !important;
+    color: whitesmoke !important; /* Deixa os links em preto */
+    border: 3px solid #F4F4B4 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    display: inline-block; /* Garante que a borda tenha o tamanho do texto */
+    padding: 5px 10px; /* Adiciona um pequeno espaçamento ao redor do texto */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    margin: 0; /* Remove margens extras */
 }
 
 .sidebar a:hover {
 color: #555; /* Cor ao passar o mouse */
+border-bottom: 2px solid #007BFF; /* Borda na parte inferior ao passar o mouse */
 }
 
 .sidebar.collapsed {
@@ -240,4 +297,71 @@ color: #555; /* Cor ao passar o mouse */
     background: transparent;
     border: none;
     color: #fff;
+}
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="date"], input[type="time"] {
+    border: 1px solid #d1d1d1;
+    border-radius: 30px;
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ======= FOOTER STYLES ======= */
+footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+    color: #16a085;
+    text-decoration: underline;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .navbar-nav .nav-link {
+        font-size: 12px;
+    }
+    footer {
+        font-size: 12px;
+        padding: 10px;
+    }
 }

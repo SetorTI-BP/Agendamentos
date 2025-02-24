@@ -69,19 +69,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             const date = info.date;
             const currentMonth = new Date().getMonth();
             const cellMonth = date.getMonth();
-
-            if (cellMonth !== currentMonth) {
-                return 'highlight';
-            }
-            return '';
+            return cellMonth !== currentMonth ? 'highlight' : '';
         }
     });
 
     calendar.render();
 
-    // Adiciona o evento de clique para o botão fullscreen
-    const fullscreenButton = document.querySelector('.fc-fullscreen-button');
-    if (fullscreenButton) {
-        fullscreenButton.addEventListener('click', toggleFullScreen);
-    }
+    // Adiciona o evento de clique para o botão fullscreen e insere o ícone SVG
+    setTimeout(() => {
+        const fullscreenButton = document.querySelector('.fc-fullscreen-button');
+        if (fullscreenButton) {
+            fullscreenButton.innerHTML = `
+                <img src="assets/img/Ativo 2.svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="backgound-color: white;"></img>
+            `;
+            fullscreenButton.addEventListener('click', toggleFullScreen);
+        }
+    }, 500); // Aguarda o FullCalendar renderizar os botões
 });

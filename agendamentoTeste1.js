@@ -1,91 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda de Atendimentos SMEC</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        /* Estilização adicional para a lista de atendimentos */
-        .attendance-list {
-            margin-top: 10px;
-            padding: 0;
-            list-style-type: none;
-        }
-
-        .attendance-list li {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            padding: 10px;
-            transition: background 0.3s;
-        }
-
-        .attendance-list li:hover {
-            background: #e2e6ea;
-        }
-
-        .attendance-list li span {
-            font-weight: bold;
-        }
-
-        .form-control[disabled] {
-            background-color: #e9ecef !important;
-        }
-
-        /* Estilo para o menu lateral */
-        .sidebar {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(0);
-        }
-
-        .sidebar.collapsed {
-            transform: translateX(-250px);
-        }
-
-        .sidebar-button {
-            position: absolute;
-            top: 20px;
-            left: 270px;
-            cursor: pointer;
-            font-size: 1.5em;
-            background: transparent;
-            border: none;
-            color: #000;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-
-<body>
-    <div class="d-flex">
-        <!-- Barra Lateral -->
-        <nav class="bg-dark text-white p-3 sidebar" style="width: 250px; min-height: 100vh;">
-            <button class="sidebar-button" id="toggleSidebar">☰</button>
-            <h3 class="text-center">Menu</h3>
-            <ul class="nav flex-column mt-4">
-                <li class="nav-item mb-3">
-                    <a href="#" class="nav-link text-white" id="showAttendances">Atendimentos</a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a href="#" class="nav-link text-white" id="showHome">Home</a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a href="calendario.html" class="nav-link text-white" id="showAttendances">Calendário</a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Conteúdo Principal -->
-        <div class="container-fluid p-4" id="mainContent">
-            <!-- Conteúdo dinâmico será inserido aqui -->
-        </div>
-    </div>
-
-    <script>
-        const API_URL = 'http://localhost:3000/api/schedules';
+const API_URL = 'http://localhost:3000/api/schedules';
+        //const API_URL = `http://localhost:3000/api/schedules/${agendamentoId}`;
 
         // Formata a data para o padrão brasileiro (dd/mm/yyyy)
         const formatDateToBR = (date) => {
@@ -123,9 +37,15 @@
         const renderHomePage = async () => {
             const mainContent = document.getElementById('mainContent');
             mainContent.innerHTML = `
-                <h1 class="text-center mb-4 text-primary">Agenda de Atendimentos SMEC Balneário Pinhal</h1>
-                <div class="card p-4 mb-4 shadow">
-                    <h4 class="text-success">Agendar Atendimento</h4>
+                <div class="center-container">
+                    <div class="text_title">
+                        <h1 class="text-center mb-4 text-primary">ÁREA DE ATENDIMENTO</h1>
+                    </div>
+                </div>
+                <section class="card p-4 mb-4 shadow">
+                    <div class="text_primary_form">
+                        <h4 class="text-success">Agendar Atendimento</h4>
+                    </div>
                     <form id="scheduleForm">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome</label>
@@ -145,7 +65,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Agendar</button>
                     </form>
-                </div>
+                </section>
                 <div class="card shadow mt-5">
                     <div class="card-body">
                         <h4 class="card-title text-primary">Agendamentos Recentes</h4>
@@ -199,25 +119,30 @@
         const renderAttendancesPage = () => {
             const mainContent = document.getElementById('mainContent');
             mainContent.innerHTML = `
-                <h4 class="text-primary">Atendimentos</h4>
-                <select id="monthSelector" class="form-select form-select-sm mb-3">
-                    <option value="" selected disabled>Selecione o Mês</option>
-                    <option value="0">Janeiro</option>
-                    <option value="1">Fevereiro</option>
-                    <option value="2">Março</option>
-                    <option value="3">Abril</option>
-                    <option value="4">Maio</option>
-                    <option value="5">Junho</option>
-                    <option value="6">Julho</option>
-                    <option value="7">Agosto</option>
-                    <option value="8">Setembro</option>
-                    <option value="9">Outubro</option>
-                    <option value="10">Novembro</option>
-                    <option value="11">Dezembro</option>
-                </select>
-                <ul class="attendance-list" id="attendancesList"></ul>
-            `;
+        <h4 class="text-primary">Atendimentos</h4>
+        <select id="monthSelector" class="form-select form-select-sm mb-3">
+            <option value="" selected disabled>Selecione o Mês</option>
+            <option value="0">Janeiro</option>
+            <option value="1">Fevereiro</option>
+            <option value="2">Março</option>
+            <option value="3">Abril</option>
+            <option value="4">Maio</option>
+            <option value="5">Junho</option>
+            <option value="6">Julho</option>
+            <option value="7">Agosto</option>
+            <option value="8">Setembro</option>
+            <option value="9">Outubro</option>
+            <option value="10">Novembro</option>
+            <option value="11">Dezembro</option>
+        </select>
+        <button id="exportExcel" class="btn btn-success mb-3">Exportar para Excel</button>
+        <ul class="attendance-list" id="attendancesList"></ul>
+    `;
+
             document.getElementById('monthSelector').addEventListener('change', loadMonthAttendances);
+
+            // Adicionar evento ao botão de exportação após a página ser renderizada
+            document.getElementById("exportExcel").addEventListener("click", exportToExcel);
         };
 
         const loadMonthAttendances = async (e) => {
@@ -279,7 +204,102 @@
         document.getElementById('showAttendances').addEventListener('click', renderAttendancesPage);
 
         renderHomePage();
-    </script>
-</body>
 
-</html>
+        //Exportar para excel
+        const exportToExcel = async () => {
+            const selectedMonth = document.getElementById('monthSelector').value;
+
+            if (selectedMonth === "" || selectedMonth === null) {
+                alert("Por favor, selecione um mês antes de exportar.");
+                return;
+            }
+
+            const response = await axios.get(API_URL);
+            const schedules = response.data;
+
+            // Filtrar os agendamentos pelo mês selecionado
+            const filteredSchedules = schedules.filter(schedule => {
+                const scheduleDate = new Date(schedule.date);
+                return scheduleDate.getMonth() === parseInt(selectedMonth);
+            });
+
+            if (filteredSchedules.length === 0) {
+                alert("Não há atendimentos para exportar neste mês.");
+                return;
+            }
+
+            // Formatar os dados para exportação
+            const data = filteredSchedules.map(schedule => ({
+                "Nome": schedule.name,
+                "Assunto": schedule.subject,
+                "Data": formatDateToBR(schedule.date),
+                "Horário": schedule.time
+            }));
+
+            // Criar uma planilha
+            const ws = XLSX.utils.json_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Atendimentos");
+
+            // Salvar o arquivo Excel com o nome do mês
+            const monthNames = [
+                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            ];
+            const selectedMonthName = monthNames[parseInt(selectedMonth)];
+
+            XLSX.writeFile(wb, `Atendimentos_${selectedMonthName}.xlsx`);
+        };
+
+        //////// Abre o modal de edição com os dados do agendamento selecionado
+        const editSchedule = async (id) => {
+            console.log("ID do agendamento:", id); // Verifica o ID
+            const response = await axios.get(`${API_URL}/${id}`);
+            const schedule = response.data;
+
+            document.getElementById('editId').value = schedule.id;
+            document.getElementById('editDate').value = schedule.date;
+
+            // Atualiza os horários disponíveis no modal
+            const editTimeContainer = document.getElementById('editTimeContainer');
+            editTimeContainer.innerHTML = `<label for="editTime" class="form-label">Novo Horário</label>${await generateTimeSlots(schedule.date)}`;
+
+            // Espera o conteúdo ser renderizado e garante que o select de horário seja atualizado
+            const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+        };
+
+
+
+        // Atualiza o agendamento no banco de dados
+        document.getElementById('editScheduleForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const id = document.getElementById('editId').value;
+            const date = document.getElementById('editDate').value;
+
+            // Aguardar o modal ser renderizado antes de acessar o campo de horário
+            const timeElement = document.getElementById('editTime');
+            const time = timeElement ? timeElement.value : null;  // Garantir que o campo de horário existe
+
+            if (!time) {
+                await axios.put(`${API_URL}/${id}`, { date, time });
+                alert('Atendimento atualizado com sucesso!');
+                document.getElementById('editModal').querySelector('.btn-close').click(); // Fecha o modal
+                renderHomePage(); // Atualiza a página
+            }
+
+            else if (!time) {
+                alert("Por favor, selecione um horário.");
+                return;
+
+            } else if (error) {
+                alert('Erro ao atualizar o atendimento. Tente novamente.');
+            }
+        });
+
+        // Atualiza os horários disponíveis ao alterar a data no modal
+        document.getElementById('editDate').addEventListener('change', async (e) => {
+            const selectedDate = e.target.value;
+            document.getElementById('editTimeContainer').innerHTML = `<label for="editTime" class="form-label">Novo Horário</label>${await generateTimeSlots(selectedDate)}`;
+        });

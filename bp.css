@@ -1,0 +1,455 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+html, body {
+    background-color: #EDEDEE !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+    font-family: 'Gantari', serif;
+    background-color: whitesmoke;
+    color: #333;
+}
+
+/* Ajustar a largura para o layout não ultrapassar a tela */
+.container, .hero, .services {
+    max-width: 100%;
+}
+
+/* Navbar */
+.navbar {
+    padding: 25px 30px; /* Ajuste no padding */
+    background-color: #39393D !important; /* Cor de fundo */
+}
+
+.navbar-nav .nav-link {
+    color: whitesmoke !important; /* Cor dos links */
+    font-size: 1.2rem; /* Ajusta o tamanho da fonte */
+    font-weight: bold; /* Deixa os links em negrito */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #F4F4B4 !important; /* Cor ao passar o mouse */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #F4F4B4; /* Cor do nome da marca */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Suaviza a transição da cor */
+}
+
+/* Cor ao passar o mouse */
+.navbar-brand:hover {
+    color: #F4F4B4; /* Muda a cor para #F4F4B4 ao passar o mouse */
+}
+
+/* Alinha os itens da navbar no centro */
+.navbar-nav {
+    justify-content: center;
+    align-items: center;
+}
+
+nav.navbar.navbar-expand-lg.navbar-dark {
+    padding: 25px 250px;
+}
+
+/* Remove o ícone de menu de mobile */
+.sidebar-button {
+    display: none; /* Esconde o botão de menu na barra superior */
+}
+
+.mt-5 {
+    background-color: #fcb647;
+    max-width: 100% !important;
+    color: white;
+}
+
+section.services.container.mt-5 {
+    margin-top: 0% !important;
+}
+
+/* MODIFICA OS DESIGN DOS BOTOES QUADRADOS*/
+
+.row {
+    --bs-gutter-x: 3.5rem !important;
+    margin-right: calc(10* var(--bs-gutter-x)) !important;
+    margin-left: calc(10* var(--bs-gutter-x)) !important;
+    justify-content: space-around !important;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #2dbeeb;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-top: 20px;
+}
+
+/* Services */
+.services .service-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.services .service-card:hover {
+    transform: translateY(-10px);
+}
+
+.services .service-card h3 {
+    color: #5C696F !important;
+} 
+
+/* News */
+
+section.news.container.mt-5{
+    margin-top: 0px !important;
+}
+
+.news .news-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.news .news-card:hover {
+    transform: translateY(-10px);
+}
+
+.news .news-card h3 {
+    color: #f39c12;
+}
+
+/* Customizações do Carrossel */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+}
+
+.carousel-indicators button {
+    background-color: whitesmoke; /* Cor dos botões circulares */
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+}
+
+.carousel-indicators .active {
+    background-color: #007bff; /* Cor para o botão ativo */
+}
+
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    background-color: none; /* Cor dos botões de navegação */
+    background-color: black;
+    opacity: 0.5;
+    border-radius: 10%;
+}
+
+.hero-content {
+    position:unset;
+    top: 20%;
+    left: 5%;
+    right: 5%;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.row a {
+    color: rgba(0,0,0,0.0) !important;
+    text-decoration: underline;
+}
+
+/* Servicos */
+.services .service-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.services .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.services #serviceContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr) !important; /* 2 colunas em dispositivos móveis */
+}
+
+.services .service-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.services .service-card h3 {
+    color: #0D6EFD;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.services .service-card p {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Ajustando o tom do laranja */
+.services .service-card {
+    background-color: #fcb647; /* Ajustando para um laranja mais suave */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: none; /* Removendo a sombra para deixar mais clean */
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.services .service-card:hover {
+    transform: translateY(-5px); /* Reduzindo o efeito de hover */
+}
+
+.services .service-card i {
+    font-size: 2rem;
+    color: #545355;
+    margin-bottom: 15px;
+    width: 75px;
+    height: 75px;
+    line-height: 70px;
+    text-align: center;
+    display: block;
+    background-color: #ffffff; /* Mantendo o mesmo tom de laranja para os ícones */
+    border-radius: 10px;
+    box-shadow: none; /* Sem sombra ao redor do ícone */
+    -webkit-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+    margin: 0 auto;
+}
+
+
+/* Efeito hover para destacar o card e o ícone */
+.services .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Título dos serviços */
+.services .service-card h3 {
+    color: #0D6EFD;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Descrição dos serviços */
+.services .service-card p {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+
+.news-container {
+    width: 60%;
+    color: #545355;
+    margin: 20px auto;
+    background: #EDEDEE;
+    padding: 20px;
+    border-radius: 0px !important;
+}
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.news-item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.news-item:hover {
+    transform: scale(1.02);
+}
+.news-item img {
+    width: 100%;
+    height: auto;
+}
+.news-content {
+    padding: 0,85rem;
+    text-align: justify;
+    margin: 0.90rem;
+    font-family: 'Gantari', serif;
+    font-weight: 600;
+}
+.category {
+    font-size: 12px;
+    color: #f39c12;
+    font-weight: bold;
+}
+.view-all {
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Estilos para o footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 30px; /* Espaçamento interno */
+    display: flex;
+    justify-content: space-between; /* Coloca a logo à esquerda e o texto à direita */
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+}
+
+.footer_dev_end {
+    display: block;
+}
+
+.footer_info {
+    display: flex;
+    align-items: center;
+}
+
+.footer_info .img_footer {
+    width: 150px;
+    margin-right: 15px; /* Espaçamento entre a logo e o texto */
+}
+
+.footer_info p {
+    font-size: 1rem;
+    margin: 0; /* Remove qualquer margem do parágrafo */
+}
+
+/* Centralizando a parte de "Desenvolvido por" */
+.footer_dev_end {
+    background-color: rgb(57, 57, 61);
+    text-align: end;
+    font-weight: bold;
+}
+
+.footer_dev_end p {
+    font-size: 1rem;
+}
+
+.footer_dev_end a, .footer_info_two a {
+    color: #F4F4B4;
+    text-decoration: none;
+}
+
+.footer_dev_end a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* RESPONSIVIDADE PARA APARELHOS MÓVEIS */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.8rem !important; /* Ajusta o tamanho da fonte para mobile */
+    }
+
+    .hero p {
+        font-size: 1rem !important; /* Ajusta o tamanho da descrição */
+    }
+
+    .services #serviceContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas em dispositivos móveis */
+    }
+
+    .row {
+        --bs-gutter-x: 3.5rem !important;
+        margin-right: calc(0* var(--bs-gutter-x)) !important;
+        margin-left: calc(0* var(--bs-gutter-x)) !important;
+        justify-content: space-around !important;
+    }
+
+    .services .service-card {
+        max-width: 100% !important;/* Garante que o card ocupe a largura disponível */
+        margin: 10px 0 !important;
+    }
+
+    .navbar {
+        padding: 15px !important;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem !important;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem !important;
+    }
+    .news-card {
+        margin-bottom: 15px;
+    }
+}
+
+/* Ajustes para dispositivos com largura maior */
+@media (min-width: 768px) and (max-width: 992px) {
+    .services #serviceContainer {
+        grid-template-columns: repeat(4, 1fr); /* 4 colunas em tablets */
+    }
+}
+
+/* Ajustes para telas grandes */
+@media (min-width: 992px) {
+    .services #serviceContainer {
+        grid-template-columns: repeat(6, 1fr); /* 6 colunas em telas grandes */
+    }
+
+    .services .service-card {
+        width: 30%;
+    }
+}
