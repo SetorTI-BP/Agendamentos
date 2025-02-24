@@ -67,9 +67,14 @@ nav.navbar.navbar-expand-lg.navbar-dark {
 }
 
 .mt-5 {
-    background-color: #fcb647;
+    background-color: #fdc871;
     max-width: 100% !important;
     color: white;
+}
+
+.text-center {
+    text-align: center !important;
+    color: #545355;
 }
 
 section.services.container.mt-5 {
@@ -87,7 +92,7 @@ section.services.container.mt-5 {
 
 /* Hero Section */
 .hero {
-    background-color: #2dbeeb;
+    background-color: whitesmoke;
     color: white;
     text-align: center;
 }
@@ -95,11 +100,13 @@ section.services.container.mt-5 {
 .hero h1 {
     font-size: 3rem;
     font-weight: bold;
+    color: #545355;
 }
 
 .hero p {
     font-size: 1.25rem;
     margin-top: 20px;
+    color: #545355;
 }
 
 /* Services */
@@ -241,7 +248,7 @@ section.news.container.mt-5{
 
 /* Ajustando o tom do laranja */
 .services .service-card {
-    background-color: #fcb647; /* Ajustando para um laranja mais suave */
+    background-color: #ffcb76; /* Ajustando para um laranja mais suave */
     border-radius: 10px;
     padding: 20px;
     box-shadow: none; /* Removendo a sombra para deixar mais clean */
@@ -443,13 +450,38 @@ footer {
     }
 }
 
-/* Ajustes para telas grandes */
-@media (min-width: 992px) {
+@media(max-width: 1024px) {
     .services #serviceContainer {
-        grid-template-columns: repeat(6, 1fr); /* 6 colunas em telas grandes */
+        grid-template-columns: repeat(3, 1fr) !important;
+        justify-content: end;
+        max-width: 90%; /* Pode ajustar para 100% se necessário */
+        margin-left: 19.2rem !important ;
+    }
+}
+
+/* Ajustes para telas grandes */
+@media (max-width: 1440px){
+    .services #serviceContainer {
+        grid-template-columns: repeat(6, 1fr) !important; 
+        justify-content: end;
+        max-width: 100%; /* Pode ajustar para 100% se necessário */
+        margin-left: 14rem !important ;
     }
 
     .services .service-card {
-        width: 30%;
+        width: 10rem !important ;
+    }
+}
+
+@media (min-width: 1440px){
+    .services #serviceContainer {
+        grid-template-columns: repeat(6, 1fr) !important; 
+        max-width: 100%; /* Pode ajustar para 100% se necessário */
+        margin-left: 28rem !important ;
+        justify-content: space-around;
+    }
+
+    .services .service-card {
+        width: 10rem !important ;
     }
 }
