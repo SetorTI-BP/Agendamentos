@@ -4,16 +4,6 @@ const carousel = new bootstrap.Carousel('#imageCarousel', {
     ride: 'carousel' // Ativa o carrossel automaticamente
 });
 
-//Evento de aparecer o campo de busca
-document.getElementById('searchIcon').addEventListener('click', function() {
-    // Adiciona ou remove a classe 'open' para mostrar/ocultar o campo de busca
-    const searchContainer = document.querySelector('.search-container');
-    searchContainer.classList.toggle('open');
-});
-
-
-
-//Campo de busca da pagina inicial
 // Abrir o campo de busca ao clicar no ícone de lupa
 document.getElementById('searchIcon').addEventListener('click', function() {
     const searchContainer = document.querySelector('.search-container');
@@ -47,46 +37,92 @@ document.getElementById('searchInput').addEventListener('keydown', function(even
     }
 });
 
+// Evento de clique no ícone de pesquisa
+document.getElementById('searchIcon').addEventListener('click', function () {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+        searchSite(query); // Realiza a busca com o valor inserido
+    }
+});
+
 // Função para realizar a busca no site
 function searchSite(query) {
     const resultsContainer = document.getElementById('resultsContainer');
     const searchResultsSection = document.getElementById('searchResults');
+    const searchResultsTitle = document.querySelector('#searchResults h2'); // Seção de título dos resultados
     
     // Limpar resultados anteriores
     resultsContainer.innerHTML = '';
     
-    // Procurar todos os elementos no site que contêm texto
-    const allTextContent = document.body.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a');
-    
+    const visitedLinks = new Set(); // Para evitar duplicação de links
     let resultsFound = false;
-    
-    allTextContent.forEach(element => {
-        const textContent = element.textContent || element.innerText;
-        
-        // Verificar se o texto contém o termo de busca
-        if (textContent.toLowerCase().includes(query)) {
-            resultsFound = true;
-            
-            // Criar um resultado para exibir
-            const resultItem = document.createElement('div');
-            resultItem.classList.add('search-result');
-            resultItem.innerHTML = `
-                <a href="#">${textContent}</a>
-            `;
-            
-            // Adicionar o resultado ao container
-            resultsContainer.appendChild(resultItem);
+
+    // Atualizar o título com o termo de busca
+    searchResultsTitle.innerHTML = `Resultados da pesquisa "${query}"`;
+
+    // 1. Procurar no conteúdo textual do site
+    const allElements = document.body.querySelectorAll('a, p, h1, h2, h3, h4, h5, h6, li, span, div');
+    allElements.forEach(element => {
+        const textContent = element.textContent || element.innerText; // Pega o texto do elemento
+        const link = element.href || ''; // Pega o link, se existir
+
+        // Verificar se o texto contém o termo de busca (sem distinguir maiúsculas/minúsculas)
+        if (textContent.toLowerCase().includes(query.toLowerCase())) {
+            // Evitar duplicação de links fora da categoria 'secretary'
+            if (element.tagName === 'A' && !visitedLinks.has(link) && !isServiceInSecretaryCategory(link)) {
+                visitedLinks.add(link);
+
+                // Criar um resultado para exibir
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('search-result');
+                resultItem.innerHTML = `
+                    <a href="${link}">${textContent}</a>
+                `;
+                resultsContainer.appendChild(resultItem); // Adiciona o item ao container de resultados
+                resultsFound = true;
+            }
         }
     });
 
+    // 2. Buscar também nas categorias e serviços definidos em servicesData (sem duplicação)
+    Object.keys(servicesData).forEach(category => {
+        const services = servicesData[category];
+        services.forEach(service => {
+            const serviceTitle = service.title.toLowerCase();
+            const serviceLink = service.url;
+
+            // Verificar se o título do serviço contém a pesquisa (caso insensível)
+            if (serviceTitle.includes(query.toLowerCase())) {
+                // Adicionar à lista de links visitados para evitar duplicação
+                if (!visitedLinks.has(serviceLink)) {
+                    visitedLinks.add(serviceLink);
+
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('search-result');
+                    resultItem.innerHTML = `<a href="${serviceLink}" target="_blank">${service.title}</a>`;
+                    resultsContainer.appendChild(resultItem);
+                    resultsFound = true;
+                }
+            }
+        });
+    });
+
+    // Exibe a seção de resultados
     if (resultsFound) {
-        // Mostrar a seção de resultados
         searchResultsSection.style.display = 'block';
     } else {
-        // Exibir mensagem de nenhuma correspondência
         resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
     }
 }
+
+// Função para verificar se o link pertence à categoria 'secretary'
+function isServiceInSecretaryCategory(link) {
+    const secretaryLinks = servicesData['secretary'].map(service => service.url);
+    return secretaryLinks.includes(link);
+}
+
+
+
 
 
 
