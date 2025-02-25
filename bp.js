@@ -4,6 +4,94 @@ const carousel = new bootstrap.Carousel('#imageCarousel', {
     ride: 'carousel' // Ativa o carrossel automaticamente
 });
 
+//Evento de aparecer o campo de busca
+document.getElementById('searchIcon').addEventListener('click', function() {
+    // Adiciona ou remove a classe 'open' para mostrar/ocultar o campo de busca
+    const searchContainer = document.querySelector('.search-container');
+    searchContainer.classList.toggle('open');
+});
+
+
+
+//Campo de busca da pagina inicial
+// Abrir o campo de busca ao clicar no ícone de lupa
+document.getElementById('searchIcon').addEventListener('click', function() {
+    const searchContainer = document.querySelector('.search-container');
+    const searchInput = document.getElementById('searchInput');
+    const searchQuery = searchInput.value.trim().toLowerCase();
+
+    // Ativar a expansão do campo de busca
+    searchContainer.classList.toggle('active');
+
+    // Quando o campo de busca está ativo, ele começa a expandir
+    if (searchContainer.classList.contains('active')) {
+        searchInput.focus();
+    } else {
+        // Resetar a busca caso o campo seja fechado
+        searchInput.value = '';
+    }
+
+    // Verificar a busca ao clicar no ícone
+    if (searchQuery) {
+        searchSite(searchQuery);
+    }
+});
+
+// Executar busca ao pressionar a tecla Enter
+document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        const searchQuery = this.value.trim().toLowerCase();
+        if (searchQuery) {
+            searchSite(searchQuery);
+        }
+    }
+});
+
+// Função para realizar a busca no site
+function searchSite(query) {
+    const resultsContainer = document.getElementById('resultsContainer');
+    const searchResultsSection = document.getElementById('searchResults');
+    
+    // Limpar resultados anteriores
+    resultsContainer.innerHTML = '';
+    
+    // Procurar todos os elementos no site que contêm texto
+    const allTextContent = document.body.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a');
+    
+    let resultsFound = false;
+    
+    allTextContent.forEach(element => {
+        const textContent = element.textContent || element.innerText;
+        
+        // Verificar se o texto contém o termo de busca
+        if (textContent.toLowerCase().includes(query)) {
+            resultsFound = true;
+            
+            // Criar um resultado para exibir
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('search-result');
+            resultItem.innerHTML = `
+                <a href="#">${textContent}</a>
+            `;
+            
+            // Adicionar o resultado ao container
+            resultsContainer.appendChild(resultItem);
+        }
+    });
+
+    if (resultsFound) {
+        // Mostrar a seção de resultados
+        searchResultsSection.style.display = 'block';
+    } else {
+        // Exibir mensagem de nenhuma correspondência
+        resultsContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+    }
+}
+
+
+
+
+
 // Definição dos serviços para cada categoria
 const servicesData = {
     citizen: [
@@ -33,8 +121,8 @@ const servicesData = {
             url: "https://balneariopinhal.rs.gov.br/guias-de-imposto" // Link específico para "Emissão de guias de imposto"
         },
         { 
-            icon: "fas fa-tint", 
-            title: "Conta de água", 
+            icon: "fas fa-file-invoice", 
+            title: "Portal do Contribuinte", 
             url: "https://balneariopinhal.rs.gov.br/conta-de-agua" // Link específico para "Conta de Água"
         },
         { 
@@ -121,6 +209,75 @@ const servicesData = {
             title: "RH 24 Horas", 
             url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
         }
+    ],
+    secretary: [
+        {
+            icon: "fas fa-gavel", 
+            title: "Procuradoria Geral do Município", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-users-cog", 
+            title: "Secretaria Municipal de Administração", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-briefcase", 
+            title: "Secretaria Municipal de Desenvolvimento Social", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-sun", 
+            title: "Secretaria Municipal de Turismo", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-book-open", 
+            title: "Secretaria Municipal de Educação e Cultura", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-futbol", 
+            title: "Secretaria Municipal de Esporte e Juventude", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-wallet", 
+            title: "Secretaria Municipal de Finanças", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-leaf", 
+            title: "Secretaria Municipal de Meio Ambiente", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-hard-hat", 
+            title: "Secretaria Municipal de Obras e Infraestrutura", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-chalkboard-teacher", 
+            title: "Secretaria Municipal de Planejamento", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-heart", 
+            title: "Secretaria Municipal de Saúde", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+        {
+            icon: "fas fa-truck-moving", 
+            title: "Secretaria Municipal de Serviços Urbanos", 
+            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+        },
+    ],
+    gabinet: [
+        {
+            icon: "fas fa-building", 
+            title: "Gabinete do Prefeito", 
+            url: "https://balneariopinhal.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html" // Link para a página de cidadão
+        }
     ]
 };
 
@@ -153,6 +310,8 @@ function loadServices(category) {
 document.getElementById("citizenTab").addEventListener("click", () => loadServices("citizen"));
 document.getElementById("businessTab").addEventListener("click", () => loadServices("business"));
 document.getElementById("serverTab").addEventListener("click", () => loadServices("server"));
+document.getElementById("secretaryTab").addEventListener("click", () => loadServices("secretary"));
+document.getElementById("gabinetTab").addEventListener("click", () => loadServices("gabinet"));
 
 // Carregar categoria Cidadão inicialmente
 loadServices("citizen");

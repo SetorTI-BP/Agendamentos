@@ -61,10 +61,100 @@ nav.navbar.navbar-expand-lg.navbar-dark {
     padding: 25px 250px;
 }
 
+/* Estilos para o container de busca */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+/* Campo de busca */
+.search-input {
+    width: 0;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 20px;
+    border: 2px solid #007bff;
+    outline: none;
+    background-color: white;
+    transition: width 0.5s ease-out; /* Transição suave */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Quando o campo de busca está ativo, ele se expande */
+.search-container.active .search-input {
+    width: 200px; /* Tamanho máximo do campo de busca */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilo para o ícone da lupa */
+.search-icon {
+    font-size: 18px;
+    color: #007bff;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+}
+
+/* A lupa vai continuar visível quando o campo estiver ativo */
+.search-container.active .search-icon {
+    display: block;
+    margin-left: 10rem !important;
+}
+
+.search-icon:hover {
+    color: #0056b3; /* Cor de hover mais suave */
+}
+
+
+
+
+/* Mostrar o campo de busca ao clicar no ícone */
+.search-container.open .search-input {
+    display: block;
+}
+
+.search-container.open .search-icon {
+    background-color: #fcb647;
+}
+
+
 /* Remove o ícone de menu de mobile */
 .sidebar-button {
     display: none; /* Esconde o botão de menu na barra superior */
 }
+
+/* Estilos para os resultados da busca */
+#searchResults {
+    margin-top: 20px;
+}
+
+#resultsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-result a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.search-result a:hover {
+    text-decoration: underline;
+}
+
 
 .mt-5 {
     background-color: #fdc871;
@@ -120,10 +210,6 @@ section.services.container.mt-5 {
     transition: transform 0.3s ease-in-out;
 }
 
-.services .service-card:hover {
-    transform: translateY(-10px);
-}
-
 .services .service-card h3 {
     color: #5C696F !important;
 } 
@@ -165,7 +251,7 @@ section.news.container.mt-5{
 
 .carousel-indicators button {
     background-color: whitesmoke; /* Cor dos botões circulares */
-    border-radius: 50%;
+    border-radius: 10px;
     width: 12px;
     height: 12px;
 }
@@ -219,11 +305,6 @@ section.news.container.mt-5{
     cursor: pointer;
 }
 
-.services .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
 .services #serviceContainer {
     display: grid;
     grid-template-columns: repeat(6, 1fr) !important; /* 2 colunas em dispositivos móveis */
@@ -258,10 +339,6 @@ section.news.container.mt-5{
     cursor: pointer;
 }
 
-.services .service-card:hover {
-    transform: translateY(-5px); /* Reduzindo o efeito de hover */
-}
-
 .services .service-card i {
     font-size: 2rem;
     color: #545355;
@@ -283,6 +360,10 @@ section.news.container.mt-5{
 .services .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    background-color: #fabb55; /* Or another color you prefer */
+    color: white; /* Change text color on hover */
+    transform: translateY(-10px);
 }
 
 /* Título dos serviços */
@@ -348,57 +429,21 @@ section.news.container.mt-5{
     font-weight: bold;
 }
 
-/* Estilos para o footer */
-footer {
-    background-color: #343a40;
-    color: #fff;
-    padding: 20px 30px; /* Espaçamento interno */
-    display: flex;
-    justify-content: space-between; /* Coloca a logo à esquerda e o texto à direita */
-    align-items: center;
-    flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
-}
-
-.footer_dev_end {
-    display: block;
-}
-
-.footer_info {
-    display: flex;
-    align-items: center;
-}
-
-.footer_info .img_footer {
-    width: 150px;
-    margin-right: 15px; /* Espaçamento entre a logo e o texto */
-}
-
-.footer_info p {
-    font-size: 1rem;
-    margin: 0; /* Remove qualquer margem do parágrafo */
-}
-
-/* Centralizando a parte de "Desenvolvido por" */
-.footer_dev_end {
-    background-color: rgb(57, 57, 61);
-    text-align: end;
+button#citizenTab, button#businessTab, button#serverTab, button#secretaryTab, button#gabinetTab{
+    -webkit-clip-path: polygon(0% 80%, 20% 0%, 140% 0%, 105% 0%, 80% 100%, 0% 100%) !important;
+    background-color: #ffffff;
+    color: #545355;
+    border: none !important;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    font-family: 'Gantari', serif;
     font-weight: bold;
 }
 
-.footer_dev_end p {
-    font-size: 1rem;
+button#citizenTab:hover, button#businessTab:hover, button#serverTab:hover, button#secretaryTab:hover, button#gabinetTab:hover {
+    transform: scale(1.05);
+    background-color: #f39c12; /* Or another color you prefer */
+    color: white; /* Change text color on hover */
 }
-
-.footer_dev_end a, .footer_info_two a {
-    color: #F4F4B4;
-    text-decoration: none;
-}
-
-.footer_dev_end a:hover {
-    text-decoration: underline;
-}
-
-
 
 /* RESPONSIVIDADE PARA APARELHOS MÓVEIS */
 @media (max-width: 768px) {
@@ -483,5 +528,11 @@ footer {
 
     .services .service-card {
         width: 10rem !important ;
+    }
+
+    .d-flex.justify-content-center.mb-4 {
+        justify-content: left !important;
+        margin-left: 27.5rem !important;
+        padding: 2rem 0rem 0rem 0rem;
     }
 }
