@@ -26,7 +26,7 @@ html, body {
 /* Navbar */
 .navbar {
     padding: 25px 30px; /* Ajuste no padding */
-    background-color: #39393D !important; /* Cor de fundo */
+    background-color: #47474b !important; /* Cor de fundo */
 }
 
 .navbar-nav .nav-link {
@@ -67,13 +67,14 @@ nav.navbar.navbar-expand-lg.navbar-dark {
     display: flex;
     align-items: center;
 }
+
 /* Campo de busca */
 .search-input {
     width: 0;
     height: 35px;
     padding: 0 10px;
     border-radius: 20px;
-    border: 2px solid #007bff;
+    border: 2px solid #2DBEEB;
     outline: none;
     background-color: white;
     transition: width 0.5s ease-out; /* Transição suave */
@@ -90,8 +91,8 @@ nav.navbar.navbar-expand-lg.navbar-dark {
 
 /* Estilo para o ícone da lupa */
 .search-icon {
-    font-size: 18px;
-    color: #007bff;
+    font-size: 20px;
+    color: #2DBEEB;
     background: transparent;
     border: none;
     transition: color 0.3s ease-in-out;
@@ -107,11 +108,53 @@ nav.navbar.navbar-expand-lg.navbar-dark {
 }
 
 .search-icon:hover {
-    color: #0056b3; /* Cor de hover mais suave */
+    color: #BEF0F5; /* Cor de hover mais suave */
+}
+
+button#searchIcon {
+    background-color: none !important;
+    background-color: unset;
 }
 
 
+#searchResults {
+    display: none;
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
 
+.search-result a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.search-result a:hover {
+    color: #0056b3; /* Cor ao passar o mouse */
+    border-radius: 4px;
+    text-decoration: underline;
+}
+
+.search-result {
+    margin-bottom: 10px;
+}
+
+/* Estilo do container dos resultados */
+#resultsContainer {
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Seção de resultados */
+#searchResults {
+    display: none;
+    margin-top: 20px;
+}
 
 /* Mostrar o campo de busca ao clicar no ícone */
 .search-container.open .search-input {
@@ -146,13 +189,18 @@ nav.navbar.navbar-expand-lg.navbar-dark {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.search-result a {
-    color: #007bff;
-    text-decoration: none;
+/* Ícone do Instagram */
+.instagram-icon {
+    font-size: 24px;
+    color: #fff;
+    margin-left: 20px; /* Espaço entre o ícone da lupa e o Instagram */
+    transition: transform 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
-.search-result a:hover {
-    text-decoration: underline;
+/* Efeito de hover no ícone do Instagram */
+.instagram-icon:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do ícone ao passar o mouse */
+    color: #e95083; /* Altera a cor para um tom de rosa característico do Instagram */
 }
 
 
@@ -212,6 +260,7 @@ section.services.container.mt-5 {
 
 .services .service-card h3 {
     color: #5C696F !important;
+    font-size: 1rem !important;
 } 
 
 /* News */
