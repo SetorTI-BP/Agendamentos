@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro</title>
+    <link rel="stylesheet" href="loginPage.css">
+</head>
+
+<body>
+    <div class="container" id="login-container">
+        <img src="assets/pinhallitoral.png" alt="Logo" class="logo">
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="login">Usuário</label>
+            <input type="text" id="login" placeholder="Digite seu login">
+        </div>
+        <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" placeholder="Digite sua senha">
+        </div>
+        <button onclick="login()">Entrar</button>
+        <div class="link" onclick="showRegisterForm()">Cadastre-se</div>
+    </div>
+
+    <div class="container" id="register-container" style="display: none;">
+        <img src="assets/pinhallitoral.png" alt="Logo" class="logo">
+        <h2>Cadastro</h2>
+        <div class="form-group">
+            <label for="new-login">Novo Usuário</label>
+            <input type="text" id="new-login" placeholder="Digite um login">
+        </div>
+        <div class="form-group">
+            <label for="new-password">Nova Senha</label>
+            <input type="password" id="new-password" placeholder="Digite uma senha">
+        </div>
+        <button onclick="register()">Cadastrar</button>
+        <div class="link" onclick="showLoginForm()">Voltar para Login</div>
+    </div>
+
+    <script src="loginPage.js"></script>
+</body>
+</html>
