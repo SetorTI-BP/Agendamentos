@@ -13,16 +13,21 @@ app.use(bodyParser.json());
 
 const schedules = []; // Simulação de banco de dados
 
-// Configuração do transporte de e-mail
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
-    secure: process.env.SMTP_SECURE === 'true',
+    secure: process.env.SMTP_SECURE === 'true', // true para SSL, false para TLS
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
     },
+    requireTLS: true, // Garante que a conexão use STARTTLS
+    tls: {
+        rejectUnauthorized: false, // Permite conexões TLS autoassinadas
+    },
+    logger: true, // Habilita logs detalhados
 });
+
 
 // Função para enviar e-mail com lembrete
 const sendEmailWithReminder = (schedule, action) => {

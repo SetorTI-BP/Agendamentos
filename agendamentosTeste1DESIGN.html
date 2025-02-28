@@ -16,11 +16,42 @@
 </head>
 
 <body>
+
+    <!-- Modal de Edição -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Agendamento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editScheduleForm">
+                    <input type="hidden" id="editId">
+                    <div class="mb-3">
+                        <label for="editDate" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="editDate" required>
+                    </div>
+                    <div class="mb-3" id="editTimeContainer">
+                        <label for="editTime" class="form-label">Novo Horário</label>
+                        <select id="editTime" class="form-control">
+                            <option value="">Selecione um horário</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div class="d-flex flex-column">
 
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="bp.html">Balneário Pinhal</a>
+                <a class="navbar-brand" href="bp.html">
+                    <img src="assets/img/Ativo 1@8x-8.png" alt="logo_gestao_25-28" style="width: 12rem; margin-left: 10rem;">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="toggleSidebar">
                     <span class="navbar-toggler-icon"></span>

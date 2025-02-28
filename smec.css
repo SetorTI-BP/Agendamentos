@@ -1,0 +1,27 @@
+/* Estilo para a seção de responsáveis */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.card h2 {
+    margin-bottom: 20px;
+}
+
+.card .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img {
+    border: 3px solid #0099E5;
+}
+
+img.img-fluid.rounded-circle.me-3 {
+    height: 200px !important;
+}
+
+section.container.mt-5{
+    margin-top: 0rem !important;/* margin-top: 3rem !important; */
+}

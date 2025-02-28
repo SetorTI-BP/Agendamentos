@@ -378,7 +378,7 @@ section.news.container.mt-5{
 
 /* Ajustando o tom do laranja */
 .services .service-card {
-    background-color: #ffcb76; /* Ajustando para um laranja mais suave */
+    background-color: white; /* Ajustando para um laranja mais suave */
     border-radius: 10px;
     padding: 20px;
     box-shadow: none; /* Removendo a sombra para deixar mais clean */
@@ -386,6 +386,7 @@ section.news.container.mt-5{
     text-align: center;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
+    gap: 0.6rem;
 }
 
 .services .service-card i {
@@ -426,6 +427,10 @@ section.news.container.mt-5{
 .services .service-card p {
     color: #555;
     font-size: 0.9rem;
+}
+
+.div#serviceContainer{
+    gap: 0.6rem !important;
 }
 
 
@@ -476,6 +481,27 @@ section.news.container.mt-5{
     color: #f39c12;
     text-decoration: none;
     font-weight: bold;
+}
+
+.grid_two_section{
+    background-color: #fff !important;
+    color: #545355;
+}
+
+.grid_two_section h2{
+    background-color: #fff !important;
+    color: #545355;
+    padding: 2rem !important;
+    margin-right: 62rem !important;
+}
+
+.grid_two {
+    display: grid;
+    grid-template-columns: repeat(2 ,1fr);
+    gap: 20px;
+    width: 60%;
+    margin-left: 24rem;
+    padding: 1rem;
 }
 
 button#citizenTab, button#businessTab, button#serverTab, button#secretaryTab, button#gabinetTab{
@@ -573,6 +599,7 @@ button#citizenTab:hover, button#businessTab:hover, button#serverTab:hover, butto
         max-width: 100%; /* Pode ajustar para 100% se necessário */
         margin-left: 28rem !important ;
         justify-content: space-around;
+        gap: 0.6rem !important;
     }
 
     .services .service-card {

@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
     
             <div class="footer_info_two">
-                <img src="assets/img/Ativo 1@8x-8.png" class="img_footer_two" alt="logo_footer_bp" style="width: 30px;">
-                <p>&copy; 2025 Prefeitura Municipal de Balneário Pinhal</p>
+                <p style="color:white;">(51) 2103-6929</p>
                 <i class="fa fa-info"></i>
                 <a href="https://balneariopinhal.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html"> ÁCESSO A INFORMAÇÃO</a>
             </div>

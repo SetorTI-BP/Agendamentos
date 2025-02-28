@@ -363,9 +363,6 @@ button.fc-prev-button.fc-button.fc-button-primary, button.fc-next-button.fc-butt
 }
 
 #home_page {
-    border: 1px solid #2dbeeb;
-    border-radius: 25px;
-    background-color: #2dbeeb;
     text-align: center;
     width: 20%;
 }

@@ -243,7 +243,7 @@ const servicesData = {
         { 
             icon: "fas fa-clock", 
             title: "RH 24 Horas", 
-            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+            url: "http://192.168.126.156:5501/loginPage.html" // Link específico para "RH 24 Horas"
         }
     ],
     secretary: [
@@ -270,7 +270,7 @@ const servicesData = {
         {
             icon: "fas fa-book-open", 
             title: "Secretaria Municipal de Educação e Cultura", 
-            url: "https://balneariopinhal.rs.gov.br/rh-24-horas" // Link específico para "RH 24 Horas"
+            url: "agendamentosTeste1DESIGN.html" // Link específico para "RH 24 Horas"
         },
         {
             icon: "fas fa-futbol", 
